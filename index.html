@@ -4,13 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Ionic 2</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/serif.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="lib/css/dracula.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,10 +24,263 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+        <!-- Cover -->
+				<section>
+          <img src="http://i.imgur.com/x6IHVeZ.png" alt="logo" width="400" style="margin-bottom:100px;">
+          <h3>Building Hybrid Apps with Ionic 2</h3>
+          <h5>@nicobytes</h5>
+        </section>
+        <!-- Tutor -->
+				<section>
+          <!-- Bio -->
+          <section>
+            <img src="http://i.imgur.com/2RShnPj.jpg" alt="tutor" style="position: absolute;top: -80px;right: 0px;max-width: 280px;z-index: 2;">
+            <pre>
+               <code data-trim data-noescape>
+{
+  name: 'Nicolas Molina Monroy',
+  twitter: '@nicobytes',
+  website: 'https://nicobytes.com',
+  github: 'https://github.com/nicobytes'
+  jobs: [
+      'Hybrid App Developer',
+      'Front-End Developer'    
+  ],
+  organizer: [
+      'http://www.meetup.com/es/Hybrid-Apps-Colombia',
+      'http://www.meetup.com/es/Django-Bogota',
+      'http://www.meetup.com/es/Meteor-Bogota'    
+  ]
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <img src="http://i.imgur.com/cfKvAxi.jpg" alt="book">
+            <h5><a href="http://ion-book.com">www.ion-book.com</a></h5>
+          </section>
+
+          <section>
+            <img src="http://i.imgur.com/0zRMRzM.png" alt="blog">
+          </section>
+
+          <section data-background="white">
+            <img src="img/showcase/logo.png">
+            <h5><a style="color: #36393E;" href="http://sponzor.me">www.sponzor.me</a></h5>
+          </section>
+
+          <section>
+            <h1>Colombia</h1>
+          </section>
+          <section>
+            <div style="width: 100%; height:500px; display:block; overflow:hidden"></div>
+            <img src="img/colombia/meetups/1.jpeg" width="340" style="position: absolute; top:-10px; right:-52px;z-index:3">
+            <img src="img/colombia/meetups/2.jpeg" width="396" style="position: absolute; top:0px; left:0px;">
+            <img src="img/colombia/meetups/3.jpeg" width="426" style="position: absolute; bottom:84px; left:390px;z-index:2">
+            <img src="img/colombia/meetups/4.jpeg" width="396" style="position: absolute; bottom:-89px; left:-50px;">
+            <img src="img/colombia/meetups/5.jpg" width="396" style="position: absolute; top:170px; left:40px;">
+            <img src="img/colombia/meetups/6.jpg" width="396" style="position: absolute; top:9px; left:340px;">
+            <img src="img/colombia/meetups/7.jpg" width="396" style="position: absolute; bottom:-98px; right:-46px;">
+            <img src="img/colombia/meetups/8.jpg" width="396" style="position: absolute; top:224px; right:-90px;">
+            <img src="img/colombia/meetups/9.jpg" width="396" style="position: absolute; bottom:-109px; left:340px; z-index: -1;">
+          </section>
+
+          <section>
+            <h1>Peru</h1>
+          </section>
+          <section>
+            <div style="width: 100%; height:500px; display:block; overflow:hidden"></div>
+            <img src="img/peru/meetups/1.jpg" width="340" style="position: absolute; top:-10px; right:-52px;z-index:3">
+            <img src="img/peru/meetups/2.jpg" width="396" style="position: absolute; top:0px; left:0px;">
+            <img src="img/peru/meetups/3.jpg" width="426" style="position: absolute; bottom:61px; left:369px;z-index:2">
+            <img src="img/peru/meetups/8.jpg" width="396" style="position: absolute; bottom:-89px; left:-50px;">
+            <img src="img/peru/meetups/9.jpg" width="396" style="position: absolute; top:170px; left:-30px;">
+            <img src="img/peru/meetups/6.jpg" width="396" style="position: absolute; top:9px; left:340px;">
+            <img src="img/peru/meetups/5.jpg" width="296" style="position: absolute; bottom:-98px; right:29px;">
+            <img src="img/peru/meetups/4.jpg" width="196" style="position: absolute; top:224px; right:-36px;">
+            <img src="img/peru/meetups/7.jpg" width="296" style="position: absolute; bottom:-109px; left:340px; z-index: -1;">
+          </section>
+
+          <section>
+            <h1>Bolivia</h1>
+          </section>
+          <section>
+            <div style="width: 100%; height:500px; display:block; overflow:hidden"></div>
+            <img src="img/bolivia/meetups/9.jpg" width="340" style="position: absolute; top:-10px; right:-52px;z-index:3">
+            <img src="img/bolivia/meetups/2.jpg" width="396" style="position: absolute; top:0px; left:0px;">
+            <img src="img/bolivia/meetups/8.jpg" width="426" style="position: absolute; bottom:61px; left:369px;z-index:2">
+            <img src="img/bolivia/meetups/3.jpg" width="296" style="position: absolute; bottom:-111px; left:-50px;">
+            <img src="img/bolivia/meetups/6.jpg" width="350" style="position: absolute; top:170px; left:30px;z-index:2">
+            <img src="img/bolivia/meetups/4.jpg" width="296" style="position: absolute; top:-31px; left:340px;">
+            <img src="img/bolivia/meetups/5.jpg" width="396" style="position: absolute; bottom:-141px; right:29px;">
+            <img src="img/bolivia/meetups/1.jpg" width="296" style="position: absolute; top:224px; right:-36px;">
+            <img src="img/bolivia/meetups/7.jpg" width="296" style="position: absolute; bottom:-109px; left:240px; z-index: -1;">
+          </section>
+
+          <section>
+            <h1>Chile</h1>
+          </section>
+          <section>
+            <h1>...</h1>
+          </section>
+
+          <section>
+            <blockquote>
+              &ldquo;Travel is the only thing you buy that makes you richer!&rdquo;
+            </blockquote>
+          </section>
+
+        </section>
+
+        
+        <section>
+
+          <section>
+             <h1>Review</h1>
+          </section>
+
+          <section data-background="img/websdk.png">
+          </section>
+
+          <section data-background="white">
+            <img src="img/ionic-logo.svg" style="width:750px;">
+          </section>
+
+          <section>
+            <h3 style="margin:0; font-size:32px">Web Technologies You Already</h3>
+            <h2 style="font-size: 85px;">Know &amp; Love</h2>
+            <div style="margin-top: 30px">
+              <img src="img/html.png" class="logo" width="185" height="260">
+              <img src="img/css.png" class="logo" width="185" height="260" style="margin-left: 80px; margin-right: 80px;">
+              <img src="img/js.png" class="logo" width="185" height="260">
+            </div>
+            <p style="margin-top: 30px; opacity: 0.6; color:white;">
+              (You'll feel right at home)
+            </p>
+          </section>
+
+          <section>
+            <h3 style="margin:0; font-size:60px;color:white;">IBM Mobile</h3>
+            <a href="http://showcase.ionicframework.com/">http://www.ibm.com/mobilefirst/</a>
+            <img src="img/showcase/ibm.png" alt="showcase">
+          </section>
+
+          <section>
+            <h3 style="margin:0; font-size:60px;color:white;">Apps</h3>
+            <div class="apps">
+              <img src="img/showcase/just.jpeg" width="230" alt="showcase">
+              <img src="img/showcase/song.jpg" width="230" alt="showcase">
+              <img src="img/showcase/sworkit.png" width="230" alt="showcase">
+              <img src="img/showcase/unnamed.jpg" width="230" alt="showcase">
+            </div>
+          </section>
+
+          <section>
+            <h2 style="color:white; margin-top:200px;"> Ionic V1 is great</h2>
+            <p class="fragment" style="color:white;">But a lot's changed since its release</p>
+          </section>
+
+          <section>
+            <h3>2 years is a long time in web tech!</h3>
+            <aside class="notes">
+            <p>Ionic was created 2 years ago....thats ages in web tech</p>
+            </aside>
+          </section>
+
+          <section>
+            <div >
+              <div  style="color:white;">
+                <h3>A lot's changed</h3>
+                <p>Better/faster devices!</p>
+                <p>Fewer slow/bad devices!</p>
+                <p>Widely available web APIs!</p>
+                <p>Improved browser engines!</p>
+              </div>
+              <div col center>
+                <img src="img/alot-has-changed.png" width="300">
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div>
+              <div>
+                <h3>V2 Goals</h3>
+                <ol style="color:white;">
+                  <li>Simplicity</li>
+                  <li>Native UX</li>
+                  <li>Navigation</li>
+                  <li>Creative Freedom</li>
+                  <li>Future Proof</li>
+                  <li></li>
+                </ol>
+              </div>
+            </div>
+            <aside class="notes">
+              <li>Simplicity: Can we make development with ionic even easier than it was in v1</li>
+              <li>Native UX and Design: Can we push our navtive ux even further while still making it easy to cusitmize to your brand</li>
+              <li>Furture Proof: How can we make sure Ionic is built for the future</li>
+            </aside>
+          </section>
+
+          <section>
+            <h2>Talk is cheap</h2>
+            <h4>Let's see some code</h4>
+          </section>
+
+          <section>
+            <h1>1. Simplicity</h1>
+            <h3>Using properties instead of classes.</h3>
+          </section>
+
+          <section>
+            <h1>2. Native UX</h1>
+            <h3>The different modes for Ionic 2.</h3>
+          </section>
+
+          <section>
+            <h1>3. Navigation</h1>
+            <h3>More robust and powerful.</h3>
+          </section>
+
+          <section>
+            <h1>5. Creative Freedom</h1>
+            <h3>Make anything possible.</h3>
+          </section>
+
+          <section>
+            <h1>6. Future Proof</h1>
+            <h3>Building Ionic with new standards.</h3>
+          </section>
+
+          <section data-background="img/angular-bg.png">
+            <h2>JavaScript has changed</h2>
+            <p style="color:white;">Ionic 1 was built with ES5</p>
+            <p style="color:white;">ES6 brings many new features</p>
+            <p style="color:white;">NG2 is pushing for ES6</p>
+            <p style="color:white;">Different look, but all JS Classes</p>
+          </section>
+
+          <section data-background="#313744">
+            <h2>TypeScript</h2>
+            <p style="color:white;">ES6 + ES7 Decorators + Types</p>
+            <p style="color:white;">Ionic 2 and NG2 built using TS</p>
+            <p style="color:white;">Code completion in your editor</p>
+          </section>
+         
+        </section>
+
+        <!-- Level 0 -->
+        <section>
+        </section>
+
+
 			</div>
 		</div>
+
+    
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
