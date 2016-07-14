@@ -30,6 +30,7 @@
           <img src="http://i.imgur.com/x6IHVeZ.png" alt="logo" width="400" style="margin-bottom:100px;">
           <h3>Building Hybrid Apps with Ionic 2</h3>
           <h5>@nicobytes</h5>
+
         </section>
         <!-- Tutor -->
 				<section>
@@ -277,6 +278,7 @@
 
         <!-- Class 1 -->
         <section>
+
           <section data-background="white">
             <img src="img/levels/level2.png" width="250" alt="level">
             <h3 style="color:#313744;">Class 1: Basics</h3>
@@ -287,11 +289,374 @@
             <ol>
               <li style="color:white;">¿What is HybridApp?</li>
               <li style="color:white;">Showcases</li>
-              <li style="color:white;">ES6, Typescript, Angular 2</li>
-              <li style="color:white;">Generate your first app</li>
+              <li style="color:white;">New Concepts</li>
               <li style="color:white;">Syntax: Ionic 2 & Angular 2</li>
+              <li style="color:white;">Generate your first app</li>
             </ol>
           </section>
+
+          <section>
+            <h1>¿What is HybridApp?</h1>
+          </section>
+
+          <section>
+            <blockquote>
+              &ldquo;I want to build an app!&rdquo;
+            </blockquote>
+          </section>
+
+          <section>
+            <h3>More Platforms. More Problems.</h3>
+            <ul>
+              <li style="color:white;">Proficiency in each platform required</li>
+              <li style="color:white;">Entirely separate code bases</li>
+              <li style="color:white;">Timely &amp; expensive development</li>
+              <li style="color:white;">Diminishing returns</li>
+            </ul>
+            <p style="margin-top: 60px">
+              <img src="img/apple.png" class="logo" width="200" height="200" style="margin-right: 10px">
+              <img src="img/android.png" class="logo" width="200" height="200" style="margin-left: 10px; margin-right: 10px">
+              <img src="img/windows.png" class="logo" width="200" height="200" style="margin-left: 10px; margin-right: 10px">
+              <img src="img/blackberry.png" class="logo" width="200" height="200" style="margin-left: 10px;">
+            </p>
+            <p style="color:white;">Why are we still coding for multiple platforms?</p>
+          </section>
+
+          <section>
+            <blockquote>
+              &ldquo;Is there an alternative?&rdquo;
+            </blockquote>
+          </section>
+
+          <section>
+            <h3 style="font-size: 80px">Hybrid Apps!</h3>
+            <img src="img/cordova.png" class="logo" style="margin-bottom: 0;" width="300px">
+            <p style="color:white;"><strong>HTML5</strong> that acts like native</p>
+            <p style="color:white;">Web wrapped in <strong>native layer</strong></p>
+            <p style="color:white;">Direct access to <strong>native APIs</strong></p>
+            <p style="color:white;">Familiar <strong>web dev</strong> environment</p>
+            <p style="color:white;">A <strong>single code base</strong> (web platform!)</p>
+          </section>
+
+          <section>
+            <img src="img/hybrid-app.png" alt="hybrid-app">
+          </section>
+
+          <section>
+            <blockquote>
+              &ldquo;Oh No! The Zuck has spoken!&rdquo;
+            </blockquote>
+            <img src="img/tech-crunch.png">
+            <p style="font-size:10px">
+              http://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5/
+            </p>
+          </section>
+
+          <section>
+            <blockquote>
+              &ldquo;Hybrid apps are slow!&rdquo;
+            </blockquote>
+            <blockquote class="fragment">
+              &ldquo;The Times They Are a-Changin'&rdquo;
+            </blockquote>
+          </section>
+         
+          <section>
+            <h1>STATE</h1>
+            <img src="img/state.png">
+          </section>
+
+          <section data-background="img/oldphones.jpg">
+            <blockquote style="font-size: 80px; font-family:Georgia; text-shadow: 5px 0 15px rgba(0,0,0,.7)">
+              &ldquo;It's not 2007 anymore&rdquo;
+            </blockquote>
+          </section>
+
+          <section data-background="img/dylan.jpg">
+            <img src="img/times-changin.png" style="height: 100px; margin: 0 300px 40px 0;">
+            <table style="color:white;">
+              <tr>
+                <th>Year</th>
+                <th>Device</th>
+                <th>Processor</th>
+                <th>RAM</th>
+              </tr>
+              <tr>
+                <td>2007</td>
+                <td>iPhone</td>
+                <td>400 MHz</td>
+                <td>128 MB</td>
+              </tr>
+              <tr>
+                <td>2010</td>
+                <td>iPhone 4</td>
+                <td>1 GHz</td>
+                <td>512 MB</td>
+              </tr>
+              <tr>
+                <td>2015</td>
+                <td>iPhone 6</td>
+                <td>1.4 GHz dual-core</td>
+                <td>1 GB</td>
+              </tr>
+            </table>
+          </section>
+
+          <section>
+            <h1>Showcases</h1>
+          </section>
+
+          <section data-background="white">
+            <img src="img/theming.png" width="500" alt="level">
+          </section>
+
+          <section>
+            <h5>http://showcase.ionicframework.com/</h5>
+            <h5>http://blog.ionic.io/tag/built-with/</h5>
+          </section>
+
+          <section>
+            <h1>New Concepts</h1>
+          </section>
+
+          <section>
+            <h2>ECMAScript 6 (ES6)</h2>
+          </section>
+
+          <section>
+            <h3>Classes</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+class Person {
+  name;
+  age;
+
+  constructor (name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getName(){
+    return this.name;
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Modules</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+export function multiply (x, y) { return x * y }
+export var url = 'http://api.domain.com';
+
+import { multiply, url } from "./math"
+console.log(multiply(2, 2))
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Promises</h3>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+doLogin().then((rta) => {
+  console.log(rta);
+});
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <img src="img/callbacks.jpg" alt="level">
+          </section>
+
+          <section>
+            <img src="img/callback_hell.gif" alt="level">
+          </section>
+
+          <section>
+            <h3>Promises</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+doLogin()
+.then((rta) => {
+  console.log(rta);
+})
+.then((rta) => {
+  console.log(rta);
+})
+.then((rta) => {
+  console.log(rta);
+})
+.catch((error) => {
+  console.log(error);
+})
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Block Scoping</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+for (let i = 0; i < a.length; i++) {
+  let x = a[i];
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Block Scoping</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+(function() {
+    'use strict';
+
+    //Code
+})();
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>Fat Arrow Functions</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+doLogin((response) => {
+  console.log(response);
+});
+//
+doLogin(function(response){
+  console.log(response);
+});
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h5>http://es6-features.org/</h5>
+          </section>
+
+          <section>
+            <h2>Typescript</h2>
+          </section>
+
+          <section>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+class Person {
+  private name: string;
+  private age: number;
+  private single: boolean;
+
+  constructor (name, age) {
+    this.name = name;
+    this.age = age;
+    this.sigle = false;
+  }
+
+  getName():string{
+    return this.name;
+  }
+}
+              </code>
+            </pre>
+          </section>
+           
+          <section>
+            <h2>Transpiling</h2>
+          </section>
+
+          <section>
+            <h2>Web Components</h2>
+          </section>
+
+          <section>
+            <h1>Sintax</h1>
+          </section>
+
+           <section>
+            <h3>Data Binding</h3>
+            <pre style="font-size:0.8em;">
+               <code data-trim data-noescape>
+&lt;input [value]="firstName"&gt;
+&lt;button (click)="doLogin()"&gt;
+&lt;p&gt; Hola {{name}} &lt;/p&gt;
+&lt;input [(ngModel)]="name"&gt;
+               </code>
+            </pre>
+          </section>
+
+           <section>
+             <h3>Local Variable</h3>
+             <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+&lt;p #myVar&gt;&lt;/p&gt;
+&lt;button (click)="myVar.innerHTML = 'test.'"&gt;
+               </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>Directives</h3>
+            <ul>
+              <li style="color: white;">*ngIf</li>
+              <li style="color: white;">*ngFor</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Decorators</h3>
+          </section>
+
+          <section>
+            <h3>Import & Export</h3>
+          </section>
+
+          <section>
+            <h3>Dependency Injection</h3>
+          </section>
+        
+          <section>
+            <h1>Generate your first app</h1>
+          </section>
+
+          <section>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+npm install -g ionic@beta cordova
+ionic info
+ionic start appBlank blank --v2 --ts
+ionic start appSide sidemenu --v2 --ts
+ionic start appTutorial tutorial --v2 --ts
+ionic start appTabs tabs --v2 --ts
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic platform add android
+ionic platform add ios
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic serve --lab
+              </code>
+            </pre>
+          </section>
+
         </section>
 
         <section>
