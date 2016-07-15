@@ -576,18 +576,52 @@ class Person {
             <h2>Web Components</h2>
           </section>
 
+           <section>
+            <h1>Generate your first app</h1>
+          </section>
+
           <section>
-            <h1>Sintax</h1>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+npm install -g ionic@beta cordova
+ionic info
+ionic start appBlank blank --v2 --ts
+ionic start appSide sidemenu --v2 --ts
+ionic start appTabs tabs --v2 --ts
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic platform add android
+ionic platform add ios
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic serve --lab
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Syntax</h1>
           </section>
 
            <section>
             <h3>Data Binding</h3>
-            <pre style="font-size:0.8em;">
+            <pre style="font-size:0.6em;">
                <code data-trim data-noescape>
-&lt;input [value]="firstName"&gt;
-&lt;button (click)="doLogin()"&gt;
-&lt;p&gt; Hola {{name}} &lt;/p&gt;
-&lt;input [(ngModel)]="name"&gt;
+&lt;input [value]="twitter"&gt;
+&lt;button (click)="doChange()"&gt;
+&lt;p&gt; Hola {{twitter}} &lt;/p&gt;
+&lt;input [value]="twitter" (input)="twitter = $event.target.value"&gt;
+&lt;input [(ngModel)]="twitter"&gt;
                </code>
             </pre>
           </section>
@@ -622,40 +656,6 @@ class Person {
           <section>
             <h3>Dependency Injection</h3>
           </section>
-        
-          <section>
-            <h1>Generate your first app</h1>
-          </section>
-
-          <section>
-            <pre style="font-size:0.7em;">
-               <code data-trim data-noescape>
-npm install -g ionic@beta cordova
-ionic info
-ionic start appBlank blank --v2 --ts
-ionic start appSide sidemenu --v2 --ts
-ionic start appTutorial tutorial --v2 --ts
-ionic start appTabs tabs --v2 --ts
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-ionic platform add android
-ionic platform add ios
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-ionic serve --lab
-              </code>
-            </pre>
-          </section>
 
         </section>
 
@@ -674,6 +674,167 @@ ionic serve --lab
               <li style="color:white;">Ionic generator <small>Components, Directives, Pages, Pipes and Injectables</small></li>
             </ol>
           </section>
+
+          <section>
+            <h1>Anatomy</h1>
+          </section>
+
+          <section>
+            <h1>Ionic Cli</h1>
+          </section>
+
+          <section>
+            <h2>Basic Usage</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic start myAwesomeApp --v2 --ts
+cd myAwesomeApp
+ionic info
+ionic serve
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Build</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic build android
+ionic build ios
+ionic build android --release
+ionic build ios --release
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Emulate</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic emulate android
+ionic emulate ios
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Platform</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic platform add android
+ionic platform add ios
+ionic platform add wp
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Run</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic run android
+ionic run ios
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>State</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic state save
+ionic state restore
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Resources</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic resources
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Plugins (Native)</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic plugin add cordova-plugin-XXXXXX
+//Examples
+ionic plugin add cordova-plugin-camera
+ionic plugin add cordova-plugin-googlemaps
+ionic plugin add phonegap-plugin-push
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Libs (npm)</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+npm install moment --save
+              </code>
+            </pre>
+          </section>
+
+<!--
+          <section>
+            <h2>Typings</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+npm install -g typings
+//Now
+npm install underscore --save
+typings install underscore --ambient --save
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h5>http://mhartington.io/post/ionic2-external-libraries/</h5>
+          </section>
+          -->
+
+          <section>
+            <h1>Decorators</h1>
+          </section>
+
+          <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+@Decorator({
+  //meta data
+})
+export class MyClass {
+  //Your class
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <ul>
+              <li style="color:white;">@Component</li>
+              <li style="color:white;">@Injectable (hoy)</li>
+              <li style="color:white;">@Pipe (hoy)</li>
+              <li style="color:white;">@Directive</li>
+            </ul>
+          </section>
+
+          <section>
+            <h1>Generator</h1>
+          </section>
+
+          <section>
+            <h5>http://www.ion-book.com/ionic2/ionic-generator</h5>
+          </section>
+
+          <section>
+            <h5>http://ionicframework.com/docs/v2/api/config/Config/</h5>
+          </section>
+
         </section>
 
         <section>
