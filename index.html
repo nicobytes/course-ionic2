@@ -817,8 +817,8 @@ export class MyClass {
           <section>
             <ul>
               <li style="color:white;">@Component</li>
-              <li style="color:white;">@Injectable (hoy)</li>
-              <li style="color:white;">@Pipe (hoy)</li>
+              <li style="color:white;">@Injectable</li>
+              <li style="color:white;">@Pipe</li>
               <li style="color:white;">@Directive</li>
             </ul>
           </section>
@@ -828,7 +828,340 @@ export class MyClass {
           </section>
 
           <section>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic g --list
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Page</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic g page heroes
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>It is a component</h2>
+            <pre style="font-size:0.5em;">
+               <code data-trim data-noescape>
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+
+@Component({
+  templateUrl: 'build/pages/heroes/heroes.html',
+})
+export class HeroesPage {
+
+  constructor(private nav: NavController) {
+
+  }
+
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Hero Component</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic g component my-hero
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Hero Component</h2>
+            <pre style="font-size:0.5em;">
+               <code data-trim data-noescape>
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'my-hero',
+  templateUrl: 'build/components/my-hero/my-hero.html'
+})
+export class MyHero {
+
+  text: string;
+  @Input() hero: any;
+
+  constructor() {
+    this.text = 'Hello World';
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Include</h2>
+            <pre style="font-size:0.5em;">
+               <code data-trim data-noescape>
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {MyHero} from '../../components/my-hero/my-hero';
+
+@Component({
+  templateUrl: 'build/pages/heroes/heroes.html',
+  directives: [MyHero]
+})
+export class HeroesPage {
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Template</h2>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+&lt;my-hero *ngFor="let hero of heroes" [hero]="hero"&gt;&lt;/my-hero&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>ViewEncapsulation</h2>
+            <pre style="font-size:0.5em;">
+               <code data-trim data-noescape>
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+
+@Component({
+  selector: 'my-hero',
+  templateUrl: 'build/components/my-hero/my-hero.html',
+  encapsulation: ViewEncapsulation.Native
+})
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Directives</h2>
+            <pre style="font-size:0.9em;">
+              <code data-trim data-noescape>
+ionic g directive my-highlight
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+import { Directive, ElementRef } from '@angular/core';
+@Directive({
+  selector: '[my-highlight]' // Attribute selector
+})
+export class MyHighlight {
+  constructor(el: ElementRef) {
+    el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+           <section>
+            <h2>Template</h2>
+            <pre style="font-size:0.9em;">
+              <code data-trim data-noescape>
+&lt;h1 my-highlight&gt;Hola&lt;/h1&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section> 
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {MyHero} from '../../components/my-hero/my-hero';
+import {MyHighlight} from '../../components/my-highlight/my-highlight';
+
+@Component({
+  templateUrl: 'build/pages/heroes/heroes.html',
+  directives: [MyHero, MyHighlight]
+})
+export class HeroesPage {
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h2>Pipe</h2>
+            <pre style="font-size:0.9em;">
+              <code data-trim data-noescape>
+ionic g pipe reserve
+              </code>
+            </pre>
+          </section>
+
+          <section>
+             <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+import { Injectable, Pipe } from '@angular/core';
+@Pipe({
+  name: 'reserve'
+})
+@Injectable()
+export class Reserve {
+  transform(value: string, args: any[]) {
+    return value.split('').reverse().join('');
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Inlcude</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {MyHero} from '../../components/my-hero/my-hero';
+import {MyHighlight} from '../../components/my-highlight/my-highlight';
+import {Reserve} from '../../pipes/reserve';
+
+@Component({
+  templateUrl: 'build/pages/heroes/heroes.html',
+  directives: [MyHero, MyHighlight],
+  pipes: [Reserve]
+})
+export class HeroesPage {
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Template</h2>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+&lt;h1&gt;{{ 'Hola' | reserve }}&lt;/h1&gt;
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h2>Provider</h2>
+            <pre style="font-size:0.9em;">
+              <code data-trim data-noescape>
+ionic g provider heroes
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+@Injectable()
+export class Heroes {
+  data: any;
+
+  constructor(private http: Http) {
+    this.data = null;
+  }
+
+  load() {
+    //Code
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Include</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import {MyHero} from '../../components/my-hero/my-hero';
+import {MyHighlight} from '../../components/my-highlight/my-highlight';
+import {Reserve} from '../../pipes/reserve';
+import {HeroesService} from '../../providers/heroes/heroes';
+
+@Component({
+  templateUrl: 'build/pages/heroes/heroes.html',
+  directives: [MyHero, MyHighlight],
+  pipes: [Reserve],
+  providers: [ HeroesService ]
+})
+export class HeroesPage {
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Inject</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+export class HeroesPage {
+
+  heroes: any[];
+
+  constructor(
+    private nav: NavController,
+    private heroesService: HeroesService
+  ) {
+    this.heroesService.load();
+    this.heroes = [
+      {
+        name: 'as'
+      },
+      {
+        name: 'as'
+      }
+    ];
+  }
+
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
             <h5>http://www.ion-book.com/ionic2/ionic-generator</h5>
+          </section>
+
+          <section>
+            <h2>Global</h2>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import {Component} from '@angular/core';
+import {Platform, ionicBootstrap} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
+import {TabsPage} from './pages/tabs/tabs';
+import {HeroesService} from './providers/heroes/heroes';
+
+@Component({
+  template: '<ion-nav [root]="rootPage"></ion-nav>'
+})
+export class MyApp {
+
+  private rootPage: any;
+
+  constructor(
+    private platform: Platform,
+    private heroesService: HeroesService
+  ) {
+    this.heroesService.load;
+  }
+}
+
+ionicBootstrap(MyApp, [HeroesService]);
+              </code>
+            </pre>
           </section>
 
           <section>
