@@ -1145,7 +1145,7 @@ import {TabsPage} from './pages/tabs/tabs';
 import {HeroesService} from './providers/heroes/heroes';
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
 })
 export class MyApp {
 
@@ -1173,7 +1173,7 @@ ionicBootstrap(MyApp, [HeroesService]);
         <section>
           <section data-background="white">
             <img src="img/levels/level3.png" width="250" alt="level">
-            <h3 style="color:#313744;">Class 4: Navigation</h3>
+            <h3 style="color:#313744;">Class 3: Navigation</h3>
           </section>
 
           <section>
@@ -1183,6 +1183,146 @@ ionicBootstrap(MyApp, [HeroesService]);
               <li style="color:white;">Tabs, Menus, Modal, Alerts.</li>
               <li style="color:white;">Url parameters.</li>
             </ol>
+          </section>
+
+          <section>
+            <h3>Push</h3>
+<pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+// 1.
+import { NavController } from 'ionic-angular';
+// 2.
+constructor(
+    private nav: NavController,
+    private heroesService: HeroesService
+  ) {
+// 3.
+this.nav.push( HeroPage );
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Pop</h3>
+<pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+// 1.
+import { NavController } from 'ionic-angular';
+// 2.
+constructor(
+    private nav: NavController,
+    private heroesService: HeroesService
+  ) {
+// 3.
+this.nav.pop();
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>setRoot</h3>
+<pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+this.nav.setRoot( page );
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Passing Data</h3>
+<pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+this.nav.push(somethingPage, {
+  example1: data1,
+  example2: data2
+});
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Passing Data</h3>
+<pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+@Component({
+templateUrl: 'build/pages/second/second.html'
+})
+export class somethingPage {
+  constructor(nav: NavController, navParams: NavParams){
+    this.navParams.get('example1');
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Modals</h3>
+            <h5>http://ionicframework.com/docs/v2/components/#modals</h5>
+          </section>
+
+          <section>
+            <h3>Tabs</h3>
+            <h5>http://ionicframework.com/docs/v2/components/#tabs</h5>
+          </section>
+
+          <section>
+            <h3>Menus</h3>
+            <h5>http://ionicframework.com/docs/v2/components/#menus</h5>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;ion-menu [content]="content"&gt;
+  &lt;ion-content&gt;
+    &lt;ion-list&gt;
+      &lt;button menuClose ion-item (click)="openTabsPage()"&gt;Tabs&lt;/button&gt;
+      &lt;button menuClose ion-item (click)="openHeroesPage()"&gt;Heroes&lt;/button&gt;
+       &lt;button menuClose ion-item (click)="close()" &gt;Cerrar &lt;/button &gt;
+    &lt;/ion-list&gt;
+  &lt;/ion-content&gt;
+&lt;/ion-menu&gt;
+
+&lt;ion-nav id="nav" #content [root]="rootPage"&gt;&lt;/ion-nav&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+export class MenuPage {
+  private rootPage: any;
+
+  constructor(private nav: NavController) {
+    this.rootPage = TabsPage;
+  }
+
+  openHeroesPage(){
+    this.rootPage = HeroesPage;
+  }
+
+  close(){
+    this.nav.setRoot( LoginPage );
+  }
+
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+&lt;button menuToggle&gt;
+  &lt;ion-icon name="menu"&gt;&lt;/ion-icon&gt;
+&lt;/button&gt;
+              </code>
+            </pre>
+           
           </section>
         </section>
 
