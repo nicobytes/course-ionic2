@@ -1342,6 +1342,295 @@ export class MenuPage {
               <li style="color:white;">UI Components.</li>
             </ol>
           </section>
+
+          <section>
+            <h3>Sass</h3>
+            <h5>http://sass-lang.com/documentation/</h5>
+          </section>
+
+          <section>
+            <h3>Files</h3>
+            <ul>
+              <li style="color:white;">app.variables.scss</li>
+              <li style="color:white;">app.core.scss</li>
+              <li style="color:white;">app.md.scss</li>
+              <li style="color:white;">app.ios.scss</li>
+              <li style="color:white;">app.wp.scss</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Variables</h3>
+            <h5>app/theme/app.variables.scss</h5>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+$colors: (
+  primary:    #387ef5,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222,
+  favorite:   #69BB7B
+);
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Custom Colors</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+$colors: (
+  // ...
+  twitter:    #55acee
+)
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Apply</h3>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+&lt;button twitter&gt;Twitter&lt;/button&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Custom Colors</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+$colors: (
+  // ...
+  twitter:(
+    base: #55acee,
+    contrast: #ffffff
+  )
+)
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>In scss</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+.home {
+ p{
+     background: color($colors, twitter, base);
+ } 
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Sass Variables</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+$my-padding: 10px;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Apply</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+.home {
+ p{
+     background: color($colors, twitter, base);
+     padding: $my-padding;
+ } 
+}
+              </code>
+            </pre>
+          </section>
+          
+          <section>
+            <h3>Utility Attributes</h3>
+            <h5>http://ionicframework.com/docs/v2/theming/css-utilities/</h5>
+          </section>
+
+          <section>
+            <h3>Platform Specific Styles</h3>
+            <h5>http://ionicframework.com/docs/v2/theming/platform-specific-styles/</h5>
+          </section>
+
+          <section>
+            <h3>Apply</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+.md button {
+  background: red;
+}
+.ios button {
+  background: blue;
+}
+.wp button {
+  background: green;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>In html</h3>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+&lt;button [class.myclass]="true"&gt;Twitter&lt;/button&gt;
+&lt;button [attr.no-lines]="true"&gt;Twitter&lt;/button&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Overriding Ionic Sass Variables</h3>
+            <h5>http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/</h5>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+$button-ios-border-radius: 20px;
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>Include yours scss</h3>
+            <h5>app.core.scss</h5>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+@import "../pages/home/home";
+@import "../component/my-avatar/my-avatar";
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Include yours scss for OS</h3>
+            <h5>app.----.scss</h5>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+@import "../pages/home/ios/home";
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Overwrite</h3>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+button[primary]{
+  background: black;
+ }
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h2>Icons</h2>
+            <img src="http://i.cubeupload.com/fKx8Ch.png"  alt="">
+          </section>
+
+          <section>
+            <h3>Icons v1</h3>
+            <h5>http://ionicons.com/</h5>
+          </section>
+
+          <section>
+            <h3>Icons v2</h3>
+            <h5>http://ionicframework.com/docs/v2/ionicons/</h5>
+          </section>
+
+          <section>
+            <h3>Custom icons</h3>
+            <h5>http://fontawesome.io/icons/</h5>
+          </section>
+
+          <section>
+            <h3>Inlcude</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+&lt;link href="build/font-awesome/css/font-awesome.min.css" rel="stylesheet" &gt;
+              </code>
+            </pre>
+
+          </section>
+
+          <section>
+            <h3>icomoon</h3>
+            <h5>https://icomoon.io/</h5>
+          </section>
+
+          <section>
+            <h2>UI Components (without JS)</h2>
+          </section>
+
+          <section>
+            <h2>Badges</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#badges</h5>
+          </section>
+
+          <section>
+            <h2>Buttons</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#buttons</h5>
+          </section>
+
+          <section>
+            <h2>Cards</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#cards</h5>
+          </section>
+
+          <section>
+            <h2>Checkbox</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#checkbox</h5>
+          </section>
+
+          <section>
+            <h2>Datetime</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#datetime</h5>
+          </section>
+
+          <section>
+            <h2>Gestures</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#gestures</h5>
+          </section>
+
+          <section>
+            <h2>Grid</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#grid</h5>
+          </section>
+
+          <section>
+            <h2>List</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#lists</h5>
+          </section>
+
+          <section>
+            <h2>Slides</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#slides</h5>
+          </section>
+
+          <section>
+            <h2>UI Components (with JS)</h2>
+          </section>
+
+           <section>
+            <h2>Alerts</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#alert</h5>
+          </section>
+
+          <section>
+            <h2>loading</h2>
+            <h5>http://ionicframework.com/docs/v2/components/#loading</h5>
+          </section>
+
+         
         </section>
 
         <section>
