@@ -1559,7 +1559,6 @@ button[primary]{
 &lt;link href="build/font-awesome/css/font-awesome.min.css" rel="stylesheet" &gt;
               </code>
             </pre>
-
           </section>
 
           <section>
@@ -1648,6 +1647,254 @@ button[primary]{
               <li style="color:white;">Observables & Promises.</li>
             </ol>
           </section>
+
+          <section>
+            <h2>ngModel</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;form (ngSubmit)="saveData()">
+  &lt;ion-input type="text" required name="username" [(ngModel)]="model.username"&gt;&lt;/ion-input&gt;
+  &lt;ion-input type="text" required name="name" [(ngModel)]="model.name"&gt;&lt;/ion-input&gt;
+  &lt;button primary block type="submit"&gt;Save&lt;/button&gt;
+&lt;/form&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Control</h2>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+this.username = new Control(
+  'Default value',
+  Validators.required
+  /*Async*/
+);
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Control</h2>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+&lt;input type="text" 
+ngControl="username" 
+[(ngModel)]="model.username" 
+name="username" /&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>FormBuilder & ControlGroup</h2>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+myForm: ControlGroup;
+//
+constructor(
+    private formBuilder: FormBuilder
+  ) {
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Form</h1>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+this.username = new Control('', Validators.required);
+this.name = new Control('', Validators.required);
+this.myForm = this.formBuilder.group({
+  username: this.username,
+  name: this.name,
+})
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Form</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;form (ngSubmit)="saveData()" [ngFormModel]="myForm" novalidate>
+  &lt;ion-input type="text" 
+  name="username" 
+  [(ngModel)]="model.username" 
+  ngControl="username"&gt;&lt;/ion-input&gt;
+  &lt;ion-input type="text" 
+  name="name" 
+  [(ngModel)]="model.name"  ngControl="name"&gt;&lt;/ion-input&gt;
+  &lt;button primary block type="submit"&gt;Save&lt;/button&gt;
+&lt;/form&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Show errors</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;div *ngIf="username.dirty && !username.valid"&gt;
+    &lt;p *ngIf="username.errors.required"&gt;
+      Este campo es requerido
+    &lt;/p&gt;
+&lt;/div&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Validations</h2>
+            <ul>
+              <li style="color:white;">Validators.required</li>
+              <li style="color:white;">Validators.minLength(4)</li>
+              <li style="color:white;">Validators.maxLength(8)</li>
+              <li style="color:white;">Validators.pattern('[a-zA-Z ]*')</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Validations compose</h2>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+Validators.compose([
+  Validators.required,
+  Validators.minLength(4),
+  Validators.maxLength(8),
+  Validators.pattern('[a-zA-Z ]*')
+])
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Control</h2>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+this.username = new Control(
+  '',
+  Validators.compose([
+    Validators.required,
+    Validators.minLength(4),
+    Validators.maxLength(8),
+    Validators.pattern('[a-zA-Z ]*')
+  ])
+);
+              </code>
+            </pre>
+          </section>
+
+           <section>
+            <h1>Form</h1>
+            <pre style="font-size:0.8em;">
+              <code data-trim data-noescape>
+this.myForm = this.formBuilder.group({
+  username: ['', Validators.compose([....])],
+  name: ['', Validators.compose([....])],
+})
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Show errors</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;div *ngIf="myForm.controls.username.dirty && !myForm.controls.username.valid"&gt;
+    &lt;p *ngIf="myForm.controls.username.errors.required"&gt;
+      Este campo es requerido
+    &lt;/p&gt;
+&lt;/div&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>saveDate</h2>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+&lt;button primary block type="submit" [disabled]="!myForm.valid" &gt;Save&lt;/button&gt;
+//Or
+(ngSubmit)="myForm.valid && saveData()"
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Customs Validations</h2>
+            <pre style="font-size:0.6em;">
+              <code data-trim data-noescape>
+import {Control} from '@angular/common';
+
+export class AgeValidator{
+  static isOld(control: Control){
+    let value = control.value;
+    if(value > 18){
+      return {
+        'isOld': true
+      }
+    }
+    return null;
+  }
+}
+              </code>
+            </pre>
+          </section>
+          <section>
+            <h2>Include</h2>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+import { AgeValidator } from '../../validators/age';
+//Control
+age: ['', AgeValidator.isReal]
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Include</h2>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+import { AgeValidator } from '../../validators/age';
+//Control
+age: ['', AgeValidator.isReal]
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>REST API</h1>
+          </section>
+
+          <section>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+return new Promise(resolve => { 
+  this.http.get('https://randomuser.me/api/?results=25')
+  .map(res => res.json())
+  .subscribe(data => { 
+    this.data = data.results;
+    resolve(this.data);
+  });
+}); 
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Headers</h2>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+var headers = new Headers();
+headers.append('Authorization', 'Basic ----------');
+this.http.post('http://api.domain.com/users', data, {
+  headers: headers
+})
+              </code>
+            </pre>
+          </section>
+
         </section>
 
         <section>
