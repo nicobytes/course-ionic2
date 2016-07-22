@@ -1635,16 +1635,16 @@ button[primary]{
         <section>
           <section data-background="white">
             <img src="img/levels/level3.png" width="250" alt="level">
-            <h3 style="color:#313744;">Class 5: Data</h3>
+            <h3 style="color:#313744;">Class 5: Forms</h3>
           </section>
 
           <section>
-            <h2>Data</h2>
+            <h2>Forms</h2>
             <ol>
               <li style="color:white;">Binding with ngModel.</li>
-              <li style="color:white;">FormBuilder and Validations.</li>
-              <li style="color:white;">Rest API.</li>
-              <li style="color:white;">Observables & Promises.</li>
+              <li style="color:white;">FormBuilder.</li>
+              <li style="color:white;">Validations.</li>
+              <li style="color:white;">Custom validations.</li>
             </ol>
           </section>
 
@@ -1862,9 +1862,35 @@ age: ['', AgeValidator.isReal]
               </code>
             </pre>
           </section>
+        </section>
+        
+        <section>
+          <section data-background="white">
+            <img src="img/levels/level3.png" width="250" alt="level">
+            <h3 style="color:#313744;">Class 7: Data</h3>
+          </section>
 
           <section>
-            <h1>REST API</h1>
+            <h2>Data</h2>
+            <ol>
+              <li style="color:white;">REST API.</li>
+              <li style="color:white;">LocaStorage.</li>
+              <li style="color:white;">SQLite.</li>
+              <li style="color:white;">Firebase.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>REST API</h2>
+          </section>
+
+          <section>
+            <img src="http://i.cubeupload.com/sIOcSz.jpg" alt="rest">
+          </section>
+
+          <section>
+            <h2>GET</h2>
+            <h5>https://randomuser.me/</h5>
           </section>
 
           <section>
@@ -1883,6 +1909,113 @@ return new Promise(resolve => {
           </section>
 
           <section>
+            <h2>JSONPlaceholder </h2>
+            <h5>https://jsonplaceholder.typicode.com/</h5>
+            <ul>
+              <li style="color:white;">/todos (GET)</li>
+              <li style="color:white;">/todos (POST)</li>
+              <li style="color:white;">/todos/1 (GET)</li>
+              <li style="color:white;">/todos/1 (PUT)</li>
+              <li style="color:white;">/todos/1 (DELETE)</li>
+            </ul>
+          </section>
+          
+          <section>
+            <h3>getAllTodos</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+getAllTodos() {
+  return new Promise((resolve, reject) => { 
+    this.http.get(`${this.path}/todos?_expand=user`)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      }, error =>{
+        reject(error);
+      })
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>getTodo</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+getTodo(id: number){
+  return new Promise((resolve, reject) => { 
+    this.http.get(`${this.path}/todos/${id}`)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      }, error =>{
+        reject(error);
+      })
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>createTodo</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+createTodo(data: any){
+  return new Promise((resolve, reject) => { 
+    this.http.post(`${this.path}/todos`, data)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      }, error =>{
+        reject(error);
+      })
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>editTodo</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+editTodo(data: any){
+  return new Promise((resolve, reject) => { 
+    this.http.post(`${this.path}/todos`, data)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      }, error =>{
+        reject(error);
+      })
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>deleteTodo</h3>
+            <pre style="font-size:0.7em;">
+              <code data-trim data-noescape>
+deleteTodo(data: any){
+  return new Promise((resolve, reject) => { 
+    this.http.post(`${this.path}/todos`, data)
+      .map(res => res.json())
+      .subscribe(data => {
+        resolve(data);
+      }, error =>{
+        reject(error);
+      })
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
             <h2>Headers</h2>
             <pre style="font-size:0.7em;">
               <code data-trim data-noescape>
@@ -1895,7 +2028,141 @@ this.http.post('http://api.domain.com/users', data, {
             </pre>
           </section>
 
+           <section>
+            <h2>Proxies</h2>
+            <pre style="font-size:0.7em;">
+                <code data-trim data-noescape>
+  "proxies": [
+    {
+      "path": "/v1",
+      "proxyUrl": "https://api.instagram.com/v1"
+    }
+  ]
+                </code>
+              </pre>
+          </section>
+
+          <section>
+            <h2>LocalStorage</h2>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Storage, LocalStorage } from 'ionic-angular';
+@Injectable()
+export class TodosService {
+
+  todos: Storage;
+
+  constructor() {
+    this.todos = new Storage(LocalStorage);
+  }
+
+  saveTodos( todos ){
+    this.todos.set('todos', JSON.stringify(todos));
+  }
+
+  getAllTodos() {
+    return this.todos.get('todos');
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Limit</h3>
+            <h5>5MB</h5>
+          </section>
+
+          <section>
+            <h2>SQLite</h2>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Storage, SqlStorage } from 'ionic-angular';
+
+@Injectable()
+export class TodosService {
+
+todos: Storage;
+
+constructor() {
+  this.todos = new Storage( SqlStorage, {name: 'dbname'} );
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+createTable(){
+  let sql = "CREATE TABLE IF NOT EXISTS todos(id INTEGER PRIMARY KEY AUTOINCREMENT,title VARCHAR(32), done INTEGER)";
+  this.todos.query( sql )
+  .then(data => {
+    console.log( data );
+  })
+  .catch(error => {
+    console.log( error );
+  })
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+createTodo(data: any){
+  let sql =  `INSERT INTO todos(title, done) values("${data.title}","${data.done}")`;
+  this.todos.query( sql )
+  .then(data => {
+    console.log( data );
+  })
+  .catch(error => {
+    console.log( error );
+  })
+}
+              </code>
+            </pre>
+          </section>  
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+getAllTodos():Promise&lt;any&gt;{
+  let sql =  `SELECT * from todos`;
+  return this.todos.query( sql )
+  .then(response => {
+    let data = [];
+    for (let index = 0; index < response.res.rows.length; index++) {
+      data.push({
+        id: response.res.rows[index].id,
+        title: response.res.rows[index].title,
+        completed: response.res.rows[index].done == "true" ? true : false
+      });
+    }
+    return Promise.resolve( data );
+  })
+  .catch(error => {
+    return Promise.reject(error)
+  })
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Firebase</h2>
+          </section>
+
         </section>
+
+       
 
         <section>
           <section data-background="white">
