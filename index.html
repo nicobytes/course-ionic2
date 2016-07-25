@@ -3,14 +3,12 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 		<title>Ionic 2</title>
-
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/serif.css">
-
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/dracula.css">
+    
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -2307,9 +2305,170 @@ getAllTodos():Promise&lt;any&gt;{
             <h2>Firebase</h2>
           </section>
 
-        </section>
+          <section>
+            <a href="https://console.firebase.google.com/" target="_blank">
+              <h3>Create Project</h3>
+            </a>
+          </section>
 
-       
+          <section>
+            <h3>Install</h3>
+            <p><a href="https://angularfire2.com/api/" target="_blank">angularfire2</a></p>
+             <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+npm install angularfire2 --save
+npm install firebase --save
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Install typings</h3>
+             <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+npm install typings -g
+typings install --save firebase
+              </code>
+            </pre>
+          </section>
+          
+          <section>
+            <h3>Add typing</h3>
+            <p>typings/index.d.ts</p>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+/// &lt;reference path="../node_modules/angularfire2/firebase3.d.ts" /&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Config App</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+import {FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
+
+ionicBootstrap(MyApp, [
+  FIREBASE_PROVIDERS,
+  defaultFirebase({
+    apiKey: "------------",
+    authDomain: "------------",
+    databaseURL: "------------",
+    storageBucket: "------------",
+  }),
+]);
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Rules</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Service</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+import { Injectable } from '@angular/core';
+import { FirebaseListObservable, AngularFire } from 'angularfire2';
+
+@Injectable()
+export class TodosService {
+  
+  todos: FirebaseListObservable&lt;any&gt;
+
+  constructor(
+    private af: AngularFire
+  ) {
+    this.todos = this.af.database.list('/todos');
+  }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>GetAllTasks</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+getAllTasks(){
+  return this.todos;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>GetAllTodos</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+getAllTodos(){
+  return this.todos;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>createTodo</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+createTodo(todo: any){
+  return this.todos.push( todo );
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>updateTodo</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+updateTodo(task: any){
+  return this.todos.update( task.$key, {
+    title: task.title,
+    completed: task.completed
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>updateTodo</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+updateTodo(task: any){
+  return this.todos.update( task.$key, {
+    title: task.title,
+    completed: task.completed
+  });
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>removeTodo</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+removeTodo(task: any){
+  return this.todos.remove( task.$key );
+}
+              </code>
+            </pre>
+          </section>
+
+        </section>
 
         <section>
           <section data-background="white">
