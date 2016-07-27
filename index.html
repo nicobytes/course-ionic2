@@ -6,9 +6,12 @@
 		<title>Ionic 2</title>
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/serif.css">
+   
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/dracula.css">
-    
+    <!--
+     <link rel="stylesheet" href="css/print/pdf.css">
+     -->
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -2574,11 +2577,293 @@ ionic run ios
           <section>
             <h2>Build</h2>
             <ol>
+              <li style="color:white;">Preparate.</li>
+              <li style="color:white;">Signing</li>
               <li style="color:white;">Ionic Platform.</li>
               <li style="color:white;">Phonegap Build y ionic Package.</li>
               <li style="color:white;">PlayStore y AppStore.</li>
             </ol>
           </section>
+
+          <section>
+            <h2>Enable Production Mode</h2>
+              <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionicBootstrap(MyApp, [ Providers ], {
+ prodMode: true
+});
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Generate Icons and Splash Screens</h2>
+              <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic resources
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Set the Bundle ID and App Name</h2>
+              <pre style="font-size:0.5em;">
+               <code data-trim data-noescape>
+&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/
+widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"&gt;
+ &lt;name&gt;V2 Test&lt;/name&gt;
+ &lt;description&gt;An Ionic Framework and Cordova project.&lt;/description&gt;
+ &lt;author email="hi@ionicframework" href="http://ionicframework.com/"&gt;Ionic
+Framework Team&lt;/author&gt;
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>
+              <a href="https://cordova.apache.org/docs/en/4.0.0/config_ref/#global-preferences" target="_blank">
+              Global Preferences
+              </a>
+            </h5>
+          </section>
+
+          <section>
+            <h2>Minify Assets</h2>
+            <h5>
+              <a href="https://tinyjpg.com/" target="_blank">https://tinyjpg.com/</a>
+            </h5>
+          </section>
+
+          <section>
+            <h2>Signing Android Applications</h2>
+          </section>
+
+          <section>
+            <h2>Generate key</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+keytool -genkey -v -keystore my-release-key.keystore -alias upload -keyalg RSA -keysize 2048 -validity 10000
+              </code>
+            </pre>
+          </section>
+
+
+          <section>
+            <h2>Release</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+Ionic build android --release
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>To sign the unsigned APK</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore platforms/android/build/outputs/apk/android-release-unsigned.apk upload
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Run the zip align tool to optimize the APK.</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+zipalign -v 4 platforms/android/build/outputs/apk/android-release-unsigned.apk upload.apk
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>
+              <a href="https://play.google.com/apps/publish" href="_target">Google Play</a>
+            </h2>
+          </section>
+
+          <section>
+            <h2>Signing iOS Applications</h2>
+          </section>
+
+          <section>
+            <h2>Apple Developer Account Required</h2>
+          </section>
+
+          <section>
+            <h3>Generate .p12</h3>
+          </section>
+
+          <section>
+            <h3>::before Generate .certSigningRequest</h3>
+          </section>
+
+          <section>
+            <h3>::before Generate mykey.key</h3>
+          </section>
+
+          <section>
+            <h2>Signing iOS Applications with MAC</h2>
+            <h5>
+              <a href="http://docs.ionic.io/v2.0.0-beta/docs/ios-build-profiles" target="_blank">Tutorial</a>
+            </h5>
+          </section>
+
+          <section>
+            <h5>Keychain Access > Certificate Assistant > Request a Certificate From a Certificate Authority</h5>
+            <img src="https://files.readme.io/yqMiQz4WTpGKYoE0tAjU_Screen%20Shot%202015-10-05%20at%2012.47.10%20PM.png" alt="img">
+          </section>
+
+          <section>
+            <h2>Signing iOS Applications without Mac</h2>
+            <h5>
+              <a href="https://slproweb.com/products/Win32OpenSSL.html" target="_blank">openssl</a>
+            </h5>
+          </section>
+
+          <section>
+            <h2>Signing iOS Applications without Mac</h2>
+              <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+openssl genrsa -out mykey.key 2048
+openssl req -new -key mykey.key -out myCSR.certSigningRequest -subj "/emailAddress=you@yourdomain.com, CN=Your Name, C=AU"
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Done! .certSigningRequest</h2>
+          </section>
+
+          <section>
+            <h5>Upload => .certSigningRequest</h5>
+            <h5>Download <= .cer</h5>
+          </section>
+
+          <section>
+            <h2>
+              <a href="https://developer.apple.com/account/" href="_blank">developer</a>
+            </h2>
+          </section>
+
+          <section>
+            <h2>Generate .p12 with MAC</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+Open Keychain Access
+Open .cer >  Export .p12
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h2>Generate .p12 without MAC</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+openssl x509 -in ios_development.cer -inform DER -out app_pem_file.pem -outform PEM
+openssl pkcs12 -export -inkey mykey.key -in app_pem_file.pem -out app_p12.p12
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h2>Submitting an app using XCode</h2>
+            <pre style="font-size:0.9em;">
+              <code data-trim data-noescape>
+ionic build ios
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Open .xcodeproj </h2>
+            <h5> platforms/ios/snapaday.xcodeproj</h5>
+            <img src="http://i.cubeupload.com/KFNzRs.png" alt="xcodeproj">
+          </section>
+
+          <section>
+            <h2>Open .xcarchive</h2>
+            <img src="http://i.cubeupload.com/iXHK0G.png" alt="xcarchive">
+          </section>
+
+          <section>
+            <h2>Validate</h2>
+            <img src="http://i.cubeupload.com/Fu6oNT.png" alt="validate">
+          </section>
+
+          <section>
+            <h2>Upload</h2>
+            <img src="http://i.cubeupload.com/F7Qwvr.png" alt="validate">
+          </section>
+
+          <section>
+            <h2>Submitting an app without Mac</h2>
+          </section>
+
+          <section>
+            <h1>
+              <a href="http://docs.ionic.io/docs/package-usage" target="_blank">Ionic Package</a>
+            </h1>
+          </section>
+
+          <section>
+            <h1>
+              <a href="https://build.phonegap.com/" target="_blank">Phonegap Build</a>
+            </h1>
+          </section>
+
+          <section>
+            <h5>Application Loader </h5>
+            <img src="http://i.cubeupload.com/GElV3C.png" alt="">
+          </section>
+
+          <section>
+            <h2>
+              <a href="https://itunesconnect.apple.com/" href="_blank">itunesconnect</a>
+            </h2>
+          </section>
+
+          <section data-background="white">
+            <h1 style="color:#313744;">Ionic Platform</h1>
+            <img src="http://i.cubeupload.com/peHJNq.png" alt="platform">
+          </section>
+
+          <section data-background="white">
+            <h3 style="color:#313744;">Push</h3>
+            <img src="https://files.readme.io/DwctiXvRQKWoXT0Ma5xI_send-push-diagram.png" alt="">
+          </section>
+
+          <section data-background="white">
+            <h3 style="color:#313744;">Users</h3>
+            <img src="http://i.cubeupload.com/52c0tX.png" alt="">
+          </section>
+
+          <section data-background="white">
+            <h3 style="color:#313744;">Deploy</h3>
+            <img src="https://files.readme.io/tPT8frP9QzCgAYGw3A1v_ionic-deploy.png" alt="">
+          </section>
+
+          <section data-background="white">
+            <h3 style="color:#313744;">Package</h3>
+            <img src="https://files.readme.io/cooD1ieWTturGnBmP0yD_package-api-diagram-1.png" alt="">
+          </section>
+
+          <section data-background="white">
+            <img src="http://blog.ionic.io/wp-content/uploads/2015/06/analytics-header.png" alt="">
+          </section>
+
+        </section>
+
+        <section>
+          <h2>News</h2>
+          <h5>http://www.ion-book.com/</h5>
+          <h5>http://blog.ionic.io/</h5>
+        </section>
+
+        <section>
+          <h1>Thanks</h1>
         </section>
 
 
