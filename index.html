@@ -533,7 +533,22 @@
           </section>
 
           <section>
-            <h3>Classes</h3>
+            <h3>Classes (Antes)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+var Person = function (name, age) {
+    this.name = name;
+    this.age = age;
+};
+Person.prototype.getName = function () {
+    return this.name;
+};
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Classes (Ahora)</h3>
             <pre style="font-size:0.7em;">
                <code data-trim data-noescape>
 class Person {
@@ -554,7 +569,22 @@ class Person {
           </section>
 
           <section>
-            <h3>Modules</h3>
+            <h3>Modules (Antes)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+//  lib/math.js
+LibMath = {};
+LibMath.multiply = function (x, y) { return x * y };
+
+//  someApp.js
+var math = LibMath;
+console.log(math.multiply(2, 2));
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Modules (Ahora)</h3>
             <pre style="font-size:0.7em;">
                <code data-trim data-noescape>
 export function multiply (x, y) { return x * y }
@@ -567,7 +597,22 @@ console.log(multiply(2, 2))
           </section>
 
           <section>
-            <h3>Promises</h3>
+            <h3>Promises (Antes)</h3>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+function doSomething (onDone) {
+  onDone();
+}
+
+doSomething(function(rta){
+  console.log(rta);
+})
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Promises (Ahora)</h3>
             <pre style="font-size:0.9em;">
                <code data-trim data-noescape>
 doLogin().then((rta) => {
@@ -607,18 +652,7 @@ doLogin()
           </section>
 
           <section>
-            <h3>Block Scoping</h3>
-            <pre style="font-size:0.7em;">
-               <code data-trim data-noescape>
-for (let i = 0; i < a.length; i++) {
-  let x = a[i];
-}
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <h3>Block Scoping</h3>
+            <h3>Block Scoping (Antes)</h3>
             <pre style="font-size:0.7em;">
                <code data-trim data-noescape>
 (function() {
@@ -628,20 +662,88 @@ for (let i = 0; i < a.length; i++) {
 })();
               </code>
             </pre>
+          </section>
+
+          <section>
+            <h3>Block Scoping (Ahora)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+for (let i = 0; i < a.length; i++) {
+  let x = a[i];
+}
+              </code>
+            </pre>
             
           </section>
 
           <section>
-            <h3>Fat Arrow Functions</h3>
+            <h3>let y const (Antes)</h3>
             <pre style="font-size:0.7em;">
                <code data-trim data-noescape>
-doLogin((response) => {
-  console.log(response);
-});
-//
-doLogin(function(response){
-  console.log(response);
-});
+if(true) {
+  var twitter = "@nicobytes";
+}
+console.log(twitter); //twitter es global
+//Const no existe en ES5
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>let y const (Ahora)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+const PI = 3.14;
+if(true) {
+  let twitter = "@nicobytes";
+}
+console.log(twitter); //Error porque twitter ha sido definida dentro de IF
+console.log(PI); //3.14
+
+PI = 3.12; //Error porque PI es un constante y no puede cambiar de valor una vez definida.
+
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>Fat Arrow Functions (Antes)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+var numbers = [1,2,3,4];
+numbers.map(function(item){
+  return item * 2;
+}); //[2,4,6,8]
+
+function Person(){
+  this.foo = function(){}
+  this.bar = function(){
+    var self = this;
+    document.addEventListener("click", function(e){
+      self.foo();
+    });
+  }
+}
+              </code>
+            </pre>
+            
+          </section>
+
+          <section>
+            <h3>Fat Arrow Functions (Ahora)</h3>
+            <pre style="font-size:0.7em;">
+               <code data-trim data-noescape>
+let numbers = [1,2,3,4];
+numbers.map(item => item * 2); //[2,4,6,8]
+
+class Person(){
+  foo(){}
+  bar(){
+    document.addEventListener("click", (e) => this.foo());
+  } 
+}
               </code>
             </pre>
             
@@ -650,6 +752,9 @@ doLogin(function(response){
           <section>
             <a href="http://es6-features.org/" target="_blank">
               <h5>http://es6-features.org/</h5>
+            </a>
+            <a href="https://www.ion-book.com/blog/tips/es6-ionic-2/" target="_blank">
+              <h5>ES6 & Ionic 2</h5>
             </a>
           </section>
 
