@@ -853,7 +853,7 @@ ionic start
             <h3 style="color:#313744;">TypeScript</h3>
           </section>
           <section style="color:white;" >
-            <h2 >TypeScript = Transpiling</h2>
+            <h2>TypeScript = Transpiling</h2>
             <ul>
               <li>ES6</li>
               <li>Export & Import</li>
@@ -905,25 +905,16 @@ ionic start
             <img src="img/levels/level1.png" width="250" alt="level">
             <h3 style="color:#313744;">Module 3: Understanding Ionic</h3>
           </section>
-
-          
-          <section>
-            <h2>Understanding Ionic</h2>
-            <ol>
-              <li style="color:white;">Generate your first app</li>
-              <li style="color:white;">Syntax (Ionic 2 & Angular 2)</li>
-              <li style="color:white;">Anatomy</li>
-              <li style="color:white;">Ionic CLI</li>
-            </ol>
-          </section>
-
-           <section>
-            <h1>Generate your first app</h1>
-          </section>
-
-
-          <section>
-            <h1>Anatomy</h1>
+          <section style="color:white;">
+            <h2>Anatomy</h2>
+            <ul>
+              <li>src</li>
+              <li>www</li>
+              <li>plugins</li>
+              <li>platforms</li>
+              <li>resources</li>
+              <li>hooks</li>
+            </ul>
           </section>
 
           <section>
@@ -938,6 +929,29 @@ ionic start myAwesomeApp --v2 --ts
 cd myAwesomeApp
 ionic info
 ionic serve
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Platform</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic platform add android --save
+ionic platform add ios --save
+ionic platform add wp --save
+ionic platform ls
+ionic platform rm android
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Run</h2>
+            <pre style="font-size:0.9em;">
+               <code data-trim data-noescape>
+ionic run android
+ionic run ios
               </code>
             </pre>
           </section>
@@ -965,27 +979,6 @@ ionic emulate ios
           </section>
 
           <section>
-            <h2>Platform</h2>
-            <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-ionic platform add android
-ionic platform add ios
-ionic platform add wp
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <h2>Run</h2>
-            <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-ionic run android
-ionic run ios
-              </code>
-            </pre>
-          </section>
-
-          <section>
             <h2>State</h2>
             <pre style="font-size:0.9em;">
                <code data-trim data-noescape>
@@ -996,23 +989,16 @@ ionic state restore
           </section>
 
           <section>
-            <h2>Resources</h2>
-            <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-ionic resources
-              </code>
-            </pre>
-          </section>
-
-          <section>
             <h2>Plugins (Native)</h2>
-            <pre style="font-size:0.9em;">
+            <pre style="font-size:0.8em;">
                <code data-trim data-noescape>
-ionic plugin add cordova-plugin-XXXXXX
+ionic plugin add cordova-plugin-XXXXXX save
 //Examples
-ionic plugin add cordova-plugin-camera
-ionic plugin add cordova-plugin-googlemaps
-ionic plugin add phonegap-plugin-push
+ionic plugin add cordova-plugin-camera --save
+ionic plugin add cordova-plugin-googlemaps --save
+ionic plugin add phonegap-plugin-push --save
+ionic plugin rm phonegap-plugin-push --save
+ionic plugin ls
               </code>
             </pre>
           </section>
@@ -1026,23 +1012,13 @@ npm install moment --save
             </pre>
           </section>
 
-
           <section>
-            <h2>Typings</h2>
+            <h2>Resources</h2>
             <pre style="font-size:0.9em;">
                <code data-trim data-noescape>
-npm install -g typings
-//Now
-npm install underscore --save
-typings install underscore --ambient --save
+ionic resources
               </code>
             </pre>
-          </section>
-
-          <section>
-            <a href="http://mhartington.io/post/ionic2-external-libraries/" target="_blank">
-              <h5>Ionic2 External Libraries/</h5>
-            </a>
           </section>
 
         </section>
@@ -1104,7 +1080,7 @@ ionic g --list
             <h2>Page</h2>
             <pre style="font-size:0.9em;">
                <code data-trim data-noescape>
-ionic g page heroes
+ionic g page users
               </code>
             </pre>
           </section>
@@ -1117,9 +1093,10 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'build/pages/heroes/heroes.html',
+  selector: 'users-page',
+  templateUrl: 'users.html',
 })
-export class HeroesPage {
+export class UsersPage {
 
   constructor(private nav: NavController) {
 
@@ -1131,25 +1108,25 @@ export class HeroesPage {
           </section>
 
           <section>
-            <h2>Hero Component</h2>
+            <h2>User Component</h2>
             <pre style="font-size:0.9em;">
                <code data-trim data-noescape>
-ionic g component my-hero
+ionic g component my-user
               </code>
             </pre>
           </section>
 
           <section>
-            <h2>Hero Component</h2>
+            <h2>User Component</h2>
             <pre style="font-size:0.5em;">
                <code data-trim data-noescape>
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'my-hero',
-  templateUrl: 'build/components/my-hero/my-hero.html'
+  selector: 'my-user',
+  templateUrl: 'my-user.html'
 })
-export class MyHero {
+export class MyUser {
 
   text: string;
   @Input() hero: any;
@@ -1163,42 +1140,14 @@ export class MyHero {
           </section>
 
           <section>
-            <h2>Include</h2>
-            <pre style="font-size:0.5em;">
-               <code data-trim data-noescape>
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {MyHero} from '../../components/my-hero/my-hero';
-
-@Component({
-  templateUrl: 'build/pages/heroes/heroes.html',
-  directives: [MyHero]
-})
-export class HeroesPage {
-              </code>
-            </pre>
+            <h2>Include in NgModule</h2>
           </section>
 
           <section>
             <h2>Template</h2>
             <pre style="font-size:0.6em;">
                <code data-trim data-noescape>
-&lt;my-hero *ngFor="let hero of heroes" [hero]="hero"&gt;&lt;/my-hero&gt;
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <h2>ViewEncapsulation</h2>
-            <pre style="font-size:0.5em;">
-               <code data-trim data-noescape>
-import { Component, Input, ViewEncapsulation } from '@angular/core';
-
-@Component({
-  selector: 'my-hero',
-  templateUrl: 'build/components/my-hero/my-hero.html',
-  encapsulation: ViewEncapsulation.Native
-})
+&lt;my-user *ngFor="let user of users" [hero]="user"&gt;&lt;/my-user&gt;
               </code>
             </pre>
           </section>
@@ -1237,29 +1186,15 @@ export class MyHighlight {
             </pre>
           </section>
 
-          <section> 
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {MyHero} from '../../components/my-hero/my-hero';
-import {MyHighlight} from '../../components/my-highlight/my-highlight';
-
-@Component({
-  templateUrl: 'build/pages/heroes/heroes.html',
-  directives: [MyHero, MyHighlight]
-})
-export class HeroesPage {
-              </code>
-            </pre>
-            
+          <section>
+            <h2>Include in NgModule</h2>
           </section>
 
           <section>
             <h2>Pipe</h2>
             <pre style="font-size:0.9em;">
               <code data-trim data-noescape>
-ionic g pipe reserve
+ionic g pipe reverse
               </code>
             </pre>
           </section>
@@ -1269,10 +1204,10 @@ ionic g pipe reserve
               <code data-trim data-noescape>
 import { Injectable, Pipe } from '@angular/core';
 @Pipe({
-  name: 'reserve'
+  name: 'reverse'
 })
 @Injectable()
-export class Reserve {
+export class Reverse {
   transform(value: string, args: any[]) {
     return value.split('').reverse().join('');
   }
@@ -1282,23 +1217,7 @@ export class Reserve {
           </section>
 
           <section>
-            <h2>Inlcude</h2>
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {MyHero} from '../../components/my-hero/my-hero';
-import {MyHighlight} from '../../components/my-highlight/my-highlight';
-import {Reserve} from '../../pipes/reserve';
-
-@Component({
-  templateUrl: 'build/pages/heroes/heroes.html',
-  directives: [MyHero, MyHighlight],
-  pipes: [Reserve]
-})
-export class HeroesPage {
-              </code>
-            </pre>
+            <h2>Include in NgModule</h2>
           </section>
 
           <section>
@@ -1315,7 +1234,7 @@ export class HeroesPage {
             <h2>Provider</h2>
             <pre style="font-size:0.9em;">
               <code data-trim data-noescape>
-ionic g provider heroes
+ionic g provider usersService
               </code>
             </pre>
           </section>
@@ -1327,7 +1246,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 @Injectable()
-export class Heroes {
+export class usersService {
   data: any;
 
   constructor(private http: Http) {
@@ -1343,41 +1262,23 @@ export class Heroes {
           </section>
 
           <section>
-            <h2>Include</h2>
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {MyHero} from '../../components/my-hero/my-hero';
-import {MyHighlight} from '../../components/my-highlight/my-highlight';
-import {Reserve} from '../../pipes/reserve';
-import {HeroesService} from '../../providers/heroes/heroes';
-
-@Component({
-  templateUrl: 'build/pages/heroes/heroes.html',
-  directives: [MyHero, MyHighlight],
-  pipes: [Reserve],
-  providers: [ HeroesService ]
-})
-export class HeroesPage {
-              </code>
-            </pre>
+            <h2>Include in NgModule</h2>
           </section>
 
           <section>
             <h2>Inject</h2>
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
-export class HeroesPage {
+export class UsersPage {
 
-  heroes: any[];
+  users: any[];
 
   constructor(
     private nav: NavController,
-    private heroesService: HeroesService
+    private usersService: UsersService
   ) {
-    this.heroesService.load();
-    this.heroes = [
+    this.usersService.load();
+    this.users = [
       {
         name: 'as'
       },
@@ -1395,45 +1296,6 @@ export class HeroesPage {
           <section>
             <a href="http://www.ion-book.com/ionic2/ionic-generator" target="_blank">
               <h5>Ionic Generator</h5>
-            </a>
-          </section>
-
-          <section>
-            <h2>Global</h2>
-          </section>
-
-          <section>
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-import {Component} from '@angular/core';
-import {Platform, ionicBootstrap} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {TabsPage} from './pages/tabs/tabs';
-import {HeroesService} from './providers/heroes/heroes';
-
-@Component({
-  template: '&lt;ion-nav [root]="rootPage"&gt;&lt;/ion-nav&gt;'
-})
-export class MyApp {
-
-  private rootPage: any;
-
-  constructor(
-    private platform: Platform,
-    private heroesService: HeroesService
-  ) {
-    this.heroesService.load;
-  }
-}
-
-ionicBootstrap(MyApp, [HeroesService]);
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <a href="http://ionicframework.com/docs/v2/api/config/Config/" target="_blank">
-              <h5>Config Global</h5>
             </a>
           </section>
         </section>
