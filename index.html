@@ -2210,6 +2210,30 @@ this.http.post('http://api.domain.com/users', data, {
             <h2>LocalStorage</h2>
           </section>
 
+           <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Storage } from '@ionic/storage';
+
+@NgModule({
+  declarations: [
+    // ...
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    // ...
+  ],
+  providers: [
+    Storage
+  ]
+})
+export class AppModule {}
+              </code>
+            </pre>
+
           <section>
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
@@ -2217,18 +2241,14 @@ import { Storage, LocalStorage } from 'ionic-angular';
 @Injectable()
 export class TodosService {
 
-  todos: Storage;
-
-  constructor() {
-    this.todos = new Storage(LocalStorage);
-  }
+  constructor(public storage: Storage) {}
 
   saveTodos( todos ){
-    this.todos.set('todos', JSON.stringify(todos));
+    this.storage.set('todos', JSON.stringify(todos));
   }
 
   getAllTodos() {
-    return this.todos.get('todos');
+    return this.storage.get('todos');
   }
 }
               </code>
@@ -2251,15 +2271,39 @@ export class TodosService {
           <section>
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
-import { Storage, SqlStorage } from 'ionic-angular';
+cordova plugin add cordova-sqlite-storage --save
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+import { Injectable } from '@angular/core';
+import { SQLite } from 'ionic-native';
 
 @Injectable()
-export class TodosService {
+export class TasksService {
 
-todos: Storage;
+  db: SQLite = null;
 
-constructor() {
-  this.todos = new Storage( SqlStorage, {name: 'dbname'} );
+  constructor() {
+    this.db = new SQLite();
+  }
+
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+openDatabase(){
+  return this.db.openDatabase({
+    name: 'data.db',
+    location: 'default' // the location field is required
+  });
 }
               </code>
             </pre>
@@ -2269,13 +2313,25 @@ constructor() {
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
 createTable(){
-  let sql = "CREATE TABLE IF NOT EXISTS todos(id INTEGER PRIMARY KEY AUTOINCREMENT,title VARCHAR(32), done INTEGER)";
-  this.todos.query( sql )
-  .then(data => {
-    console.log( data );
-  })
-  .catch(error => {
-    console.log( error );
+  let sql = 'CREATE TABLE IF NOT EXISTS tasks(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, completed INTEGER)';
+  return this.db.executeSql(sql, []);
+}
+              </code>
+            </pre>
+          </section>  
+
+          <section>
+            <pre style="font-size:0.5em;">
+              <code data-trim data-noescape>
+getAll(){
+  let sql = 'SELECT * FROM tasks';
+  return this.db.executeSql(sql, [])
+  .then(response => {
+    let tasks = [];
+    for (let index = 0; index < response.rows.length; index++) {
+      tasks.push( response.rows.item(index) );
+    }
+    return Promise.resolve( tasks );
   })
 }
               </code>
@@ -2285,40 +2341,20 @@ createTable(){
           <section>
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
-createTodo(data: any){
-  let sql =  `INSERT INTO todos(title, done) values("${data.title}","${data.done}")`;
-  this.todos.query( sql )
-  .then(data => {
-    console.log( data );
-  })
-  .catch(error => {
-    console.log( error );
-  })
+update(task: any){
+  let sql = 'UPDATE tasks SET title=?, completed=? WHERE id=?';
+  return this.db.executeSql(sql, [task.title, task.completed, task.id]);
 }
               </code>
             </pre>
-          </section>  
+          </section>
 
-          <section>
+           <section>
             <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
-getAllTodos():Promise&lt;any&gt;{
-  let sql =  `SELECT * from todos`;
-  return this.todos.query( sql )
-  .then(response => {
-    let data = [];
-    for (let index = 0; index < response.res.rows.length; index++) {
-      data.push({
-        id: response.res.rows[index].id,
-        title: response.res.rows[index].title,
-        completed: response.res.rows[index].done == "true" ? true : false
-      });
-    }
-    return Promise.resolve( data );
-  })
-  .catch(error => {
-    return Promise.reject(error)
-  })
+delete(task: any){
+  let sql = 'DELETE FROM tasks WHERE id=?';
+  return this.db.executeSql(sql, [task.id]);
 }
               </code>
             </pre>
