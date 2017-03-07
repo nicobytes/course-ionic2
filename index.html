@@ -2390,40 +2390,41 @@ npm install firebase --save
           </section>
 
           <section>
-            <h3>Install typings</h3>
-             <pre style="font-size:0.9em;">
-               <code data-trim data-noescape>
-npm install typings -g
-typings install --save firebase
-              </code>
-            </pre>
-          </section>
-          
-          <section>
-            <h3>Add typing</h3>
-            <p>typings/index.d.ts</p>
-            <pre style="font-size:0.6em;">
-               <code data-trim data-noescape>
-/// &lt;reference path="../node_modules/angularfire2/firebase3.d.ts" /&gt;
-              </code>
-            </pre>
-          </section>
-
-          <section>
             <h3>Config App</h3>
             <pre style="font-size:0.6em;">
                <code data-trim data-noescape>
-import {FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
+export const firebaseConfig = {
+  apiKey: "xxxxxxxxxxxxxxxxxxxx",
+  authDomain: "xxxxxxxxxxxxxxxxxx",
+  databaseURL: "xxxxxxxxxxxxxxxxxxxxxx",
+  storageBucket: "xxxxxxxxxxxxxxxxxxxxxxx",
+  messagingSenderId: "xxxxxxxxxxxxxxxxxxxxx"
+};
+              </code>
+            </pre>
+          </section>
 
-ionicBootstrap(MyApp, [
-  FIREBASE_PROVIDERS,
-  defaultFirebase({
-    apiKey: "------------",
-    authDomain: "------------",
-    databaseURL: "------------",
-    storageBucket: "------------",
-  }),
-]);
+          <section>
+            <h3>Incluir keys en NgModule</h3>
+            <pre style="font-size:0.6em;">
+               <code data-trim data-noescape>
+@NgModule({
+  declarations: [
+    MyApp
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp
+  ],
+  providers: [
+    AuthService
+  ]
+})
+export class AppModule {}
               </code>
             </pre>
           </section>
