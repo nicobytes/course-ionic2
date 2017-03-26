@@ -1766,9 +1766,188 @@ button[primary]{
           </section>
 
           <section>
-            <a href="http://ionicframework.com/docs/v2/components/#loading" target="_blank">
+            <a href="https://ionicframework.com/docs/v2/api/components/action-sheet/ActionSheetController/" target="_blank">
+              <h2>Action Sheet</h2>
+            </a>
+          </section>
+
+          <section>
+            <a href="https://ionicframework.com/docs/v2/api/components/loading/LoadingController/" target="_blank">
               <h2>Loading</h2>
             </a>
+          </section>
+
+          <section>
+            <h2>Resumen</h2>
+          </section>
+        </section>
+
+        <section>
+          <section data-background="white">
+            <img src="img/levels/level3.png" width="250" alt="level">
+            <h3 style="color:#313744;">UX/UI</h3>
+          </section>
+
+          <section>
+            <h2>Sass un Prepocesador</h2>
+            <p style="color:white;">En el vas a poder tener orden de tu CSS, automatizar trabajo, escalabilidad del proyecto y ahorro de tiempo.</p>
+          </section>
+
+          <section style="color:white;">
+            <h1>Usado en:</h1>
+            <ol>
+              <li style="color:white;"><a href="http://compass-style.org/" target="_blank">compass</a></li>
+              <li style="color:white;"><a href="http://bourbon.io/" target="_blank">bourbon</a></li>
+              <li style="color:white;"><a href="https://v4-alpha.getbootstrap.com/" target="_blank">bootstrap</a></li>
+              <li style="color:white;"><a href="http://foundation.zurb.com/sites.html" target="_blank">Foundation</a></li>
+            </ol>
+          </section>
+
+           <section style="color:white;">
+            <h1>Sintaxis:</h1>
+            <p>Se puede utilizar dos tipos de sintaxis *.sass y *.scss</p>
+              <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+*.scss
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+*.sass
+body
+  font: 100% $font-stack
+  color: $primary-color
+              </code>
+            </pre>
+          </section>
+
+          <section style="color:white;">
+            <h1>Variables:</h1>
+              <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Nesting:</h1>
+              <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+              </code>
+            </pre>
+          </section>
+
+          <section style="color:white;">
+            <h1>Partials:</h1>
+            <p>Nos van a servir para declarar todos los archivos que pueden ser importados ejemplo.scss</p>
+          </section>
+
+           <section>
+            <h1>Mixins</h1>
+            <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+@import 'reset';
+
+body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Import</h1>
+            <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h1>Extend</h1>
+            <pre style="font-size:0.6em;">
+                <code data-trim data-noescape>
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h2>Mayor control y calidad de codigo</h2>
+          </section>
+
+          <section>
+            <h2>Material Desing, IOS Stlye y Window Phone Style.</h2>
+          </section>
+
+          <section>
+            <h2>Theming in Ionic.</h2>
+          </section>
+
+          <section>
+            <h2>Variables de Ionic.</h2>
+          </section>
+
+          <section>
+            <h2>Estilos propios.</h2>
+          </section>
+
+          <section>
+            <h2>Utilidades.</h2>
+          </section>
+
+          <section>
+            <h2>Componente: Ion-icon</h2>
+          </section>
+
+          <section>
+            <h2>Agregar iconos propios (Font Awesome)</h2>
+          </section>
+
+          <section>
+            <h2>Resumen</h2>
           </section>
         </section>
 
