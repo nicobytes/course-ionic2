@@ -1984,11 +1984,7 @@ body {
             <h2>Control</h2>
             <pre style="font-size:0.7em;">
               <code data-trim data-noescape>
-this.username = new Control(
-  'Default value',
-  Validators.required
-  /*Async*/
-);
+'field': [_value_, [validaciones sincronas], [validaciones asíncronas]],
               </code>
             </pre>
           </section>
@@ -1998,18 +1994,17 @@ this.username = new Control(
             <pre style="font-size:0.8em;">
               <code data-trim data-noescape>
 &lt;input type="text" 
-ngControl="username" 
-[(ngModel)]="model.username" 
+formControlName="field" 
 name="username" /&gt;
               </code>
             </pre>
           </section>
 
           <section>
-            <h2>FormBuilder & ControlGroup</h2>
+            <h2>FormBuilder & FormGroup</h2>
             <pre style="font-size:0.8em;">
               <code data-trim data-noescape>
-myForm: ControlGroup;
+myForm: FormGroup;
 //
 constructor(
     private formBuilder: FormBuilder
@@ -2022,11 +2017,9 @@ constructor(
             <h1>Form</h1>
             <pre style="font-size:0.8em;">
               <code data-trim data-noescape>
-this.username = new Control('', Validators.required);
-this.name = new Control('', Validators.required);
 this.myForm = this.formBuilder.group({
-  username: this.username,
-  name: this.name,
+  username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+  name: [''],
 })
               </code>
             </pre>
@@ -2050,19 +2043,6 @@ this.myForm = this.formBuilder.group({
           </section>
 
           <section>
-            <h2>Show errors</h2>
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-&lt;div *ngIf="username.dirty && !username.valid"&gt;
-    &lt;p *ngIf="username.errors.required"&gt;
-      Este campo es requerido
-    &lt;/p&gt;
-&lt;/div&gt;
-              </code>
-            </pre>
-          </section>
-
-          <section>
             <h2>Validations</h2>
             <ul>
               <li style="color:white;">Validators.required</li>
@@ -2073,32 +2053,14 @@ this.myForm = this.formBuilder.group({
           </section>
 
           <section>
-            <h2>Validations compose</h2>
-            <pre style="font-size:0.8em;">
+            <h2>Show errors</h2>
+            <pre style="font-size:0.5em;">
               <code data-trim data-noescape>
-Validators.compose([
-  Validators.required,
-  Validators.minLength(4),
-  Validators.maxLength(8),
-  Validators.pattern('[a-zA-Z ]*')
-])
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <h2>Control</h2>
-            <pre style="font-size:0.8em;">
-              <code data-trim data-noescape>
-this.username = new Control(
-  '',
-  Validators.compose([
-    Validators.required,
-    Validators.minLength(4),
-    Validators.maxLength(8),
-    Validators.pattern('[a-zA-Z ]*')
-  ])
-);
+&lt;div *ngIf="myForm.get('username').errors && myForm.get('username').dirty "&gt;
+    &lt;p *ngIf="myForm.get('username').hasError('required')"&gt;
+      Este campo es requerido
+    &lt;/p&gt;
+&lt;/div&gt;
               </code>
             </pre>
           </section>
@@ -2108,22 +2070,9 @@ this.username = new Control(
             <pre style="font-size:0.8em;">
               <code data-trim data-noescape>
 this.myForm = this.formBuilder.group({
-  username: ['', Validators.compose([....])],
-  name: ['', Validators.compose([....])],
+  username: ['', [....]],
+  name: ['', [....]],
 })
-              </code>
-            </pre>
-          </section>
-
-          <section>
-            <h2>Show errors</h2>
-            <pre style="font-size:0.5em;">
-              <code data-trim data-noescape>
-&lt;div *ngIf="myForm.controls.username.dirty && !myForm.controls.username.valid"&gt;
-    &lt;p *ngIf="myForm.controls.username.errors.required"&gt;
-      Este campo es requerido
-    &lt;/p&gt;
-&lt;/div&gt;
               </code>
             </pre>
           </section>
@@ -2145,7 +2094,7 @@ this.myForm = this.formBuilder.group({
               <code data-trim data-noescape>
 import {Control} from '@angular/common';
 
-export class AgeValidator{
+export class MyValidators{
   static isOld(control: Control){
     let value = control.value;
     if(value > 18){
@@ -2163,24 +2112,12 @@ export class AgeValidator{
             <h2>Include</h2>
             <pre style="font-size:0.7em;">
               <code data-trim data-noescape>
-import { AgeValidator } from '../../validators/age';
+import { MyValidators } from '../../validators/validators';
 //Control
-age: ['', AgeValidator.isReal]
+age: ['', MyValidators.isOld]
               </code>
             </pre>
           </section>
-
-          <section>
-            <h2>Include</h2>
-            <pre style="font-size:0.7em;">
-              <code data-trim data-noescape>
-import { AgeValidator } from '../../validators/age';
-//Control
-age: ['', AgeValidator.isReal]
-              </code>
-            </pre>
-          </section>
-        </section>
         
         <section>
           <section data-background="white">
